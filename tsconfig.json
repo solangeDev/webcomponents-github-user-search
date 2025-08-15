@@ -1,25 +1,39 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "useDefineForClassFields": true,
+    // Módulo y target para usar ESNext y características modernas
     "module": "ESNext",
+    "target": "ESNext",
+
+    // Resolución de modulos para Node.js
+    "moduleResolution": "node",
+
+    // Permite importar modulos CommonJS y usar imports por defecto
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    // Librerías incluidas para soporte de ES2022 y DOM
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
+
+    // Omite verificación de tipos en archivos de librerías
     "skipLibCheck": true,
 
-    /* Bundler mode */
-    "moduleResolution": "bundler",
+    // Permite importar archivos .ts directamente
     "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
+
+    // Fuerza la detección de modulos
     "moduleDetection": "force",
+
+    // No genera archivos de salida (solo chequea tipos)
     "noEmit": true,
 
-    /* Linting */
+    // Opciones de chequeo estricto
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
+    "erasableSyntaxOnly": true, // Elimina sintaxis innecesaria
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true // Evita efectos secundarios no verificados
   },
+  // Incluye solo archivos dentro de src
   "include": ["src"]
 }

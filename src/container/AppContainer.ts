@@ -33,7 +33,18 @@ class AppContainer extends HTMLElement {
           width: 100vw;
           margin-top: 5%;
         }
-      </style>
+        .spinner {
+          border: 4px solid #ccc;
+          border-top: 4px solid #333;
+          border-radius: 50%;
+          width: 32px;
+          height: 32px;
+          animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+              </style>
       <div class="container">
         <app-bar></app-bar>
         <main>
@@ -50,9 +61,13 @@ class AppContainer extends HTMLElement {
     const cardContainer = this.shadowRoot!.querySelector('#user-card-container');
     if (!main || !searchInput || !cardContainer) return;
 
+    let isLoading = false;
     searchInput.addEventListener('search', async (e: any) => {
+      isLoading = true;
+      cardContainer.innerHTML = '<div class="spinner"></div>';
       const username = e.detail.username;
       const userData = await fetchGithubUser(username);
+      isLoading = false;
       cardContainer.innerHTML = '';
 
       if (!userData.error) {
@@ -64,6 +79,7 @@ class AppContainer extends HTMLElement {
         userCard.setAttribute('profile', userData.html_url || '');
         cardContainer.appendChild(userCard);
       } else {
+
         cardContainer.innerHTML = `<p style="color: red;">Usuario no encontrado</p>`;
       }
     });

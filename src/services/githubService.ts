@@ -1,5 +1,5 @@
-// src/services/githubService.ts
-const API_URL = import.meta.env.VITE_GITHUB_API_URL;
+const API_URL = 'https://api.github.com/users';
+
 export async function fetchGithubUser(username: string) {
   try {
     const response = await fetch(`${API_URL}/${username}`);
