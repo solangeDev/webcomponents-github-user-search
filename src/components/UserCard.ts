@@ -43,6 +43,7 @@ class UserCard extends HTMLElement {
           font-size: 1.2rem;
           font-weight: bold;
           margin: 0.5rem 0;
+          color: #555;
         }
         .bio {
           font-size: 1rem;

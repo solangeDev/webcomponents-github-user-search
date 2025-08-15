@@ -67,6 +67,7 @@ class AppContainer extends HTMLElement {
       cardContainer.innerHTML = '<div class="spinner"></div>';
       const username = e.detail.username;
       const userData = await fetchGithubUser(username);
+      console.log(userData, 'lala');
       isLoading = false;
       cardContainer.innerHTML = '';
 
